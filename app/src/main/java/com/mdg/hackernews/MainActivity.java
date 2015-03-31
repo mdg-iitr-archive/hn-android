@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar mToolbar;
@@ -33,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,newsItemListFragment)
         .commit();
+        //Custom list view
+
 
     }
 
