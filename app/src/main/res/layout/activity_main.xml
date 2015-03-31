@@ -27,4 +27,5 @@
             tools:layout="@layout/fragment_nav_drawer"/>
 
     </android.support.v4.widget.DrawerLayout>
+
 </LinearLayout>
