@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 class CustomAdapter extends ArrayAdapter<String> {
 
-    CustomAdapter(Context context, String[] foods) {
+    CustomAdapter(Context context, ArrayList<String> foods) {
         super(context, R.layout.custom_row ,foods);
     }
 
@@ -23,5 +25,9 @@ class CustomAdapter extends ArrayAdapter<String> {
 
         newsText.setText(singleNewsItem);
         return customView;
+    }
+    public void setEventList(ArrayList<String> eventList){
+        //notifyItemRangeChanged(0,eventList.size());
+        notifyDataSetChanged();
     }
 }
