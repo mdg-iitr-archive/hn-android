@@ -7,10 +7,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-class CustomAdapter extends ArrayAdapter<String> {
+import java.util.ArrayList;
 
-    CustomAdapter(Context context, String[] foods) {
+class CustomAdapter extends ArrayAdapter<String> {
+    ArrayList<String> foods;
+    ArrayList<Integer> scores;
+    ArrayList<Integer> comments;
+
+    CustomAdapter(Context context, ArrayList<String> foods,ArrayList<Integer> scores,    ArrayList<Integer> comments) {
         super(context, R.layout.custom_row ,foods);
+        this.foods=foods;
+        this.scores=scores;
+        this.comments=comments;
     }
 
     @Override
@@ -18,10 +26,20 @@ class CustomAdapter extends ArrayAdapter<String> {
         LayoutInflater buckysInflater = LayoutInflater.from(getContext());
         View customView = buckysInflater.inflate(R.layout.custom_row, parent, false);
 
-        String singleNewsItem = getItem(position);
+        //String singleNewsItem = getItem(position);
+        String title= foods.get(position);
+        String score= scores.get(position).toString();
+        String comment=comments.get(position).toString();
         TextView newsText = (TextView) customView.findViewById(R.id.newsText);
-
-        newsText.setText(singleNewsItem);
+        TextView scoreText = (TextView) customView.findViewById(R.id.upvotes);
+        TextView commentsText = (TextView) customView.findViewById(R.id.comments);
+        newsText.setText(title);
+        scoreText.setText(score);
+        commentsText.setText(comment);
         return customView;
+    }
+    public void setEventList(ArrayList<String> eventList){
+        //notifyItemRangeChanged(0,eventList.size());
+        notifyDataSetChanged();
     }
 }

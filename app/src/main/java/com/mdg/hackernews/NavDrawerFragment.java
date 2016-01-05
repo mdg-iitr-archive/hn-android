@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,7 +27,7 @@ public class NavDrawerFragment extends Fragment {
     ListView lv;
     private ArrayList<String> arrList;
     private ArrayAdapter<String> adapter;
-
+    NewsItemListFragment newsListObj;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_drawer,container,false);
@@ -42,6 +44,18 @@ public class NavDrawerFragment extends Fragment {
         arrList.add("Ask");
         arrList.add("Jobs");
         adapter.notifyDataSetChanged();
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("onnavCLis","clicked navbarstarts");
+                //newsListObj.sendJsonRequest(position);
+                ((MainActivity)getActivity()).afterNaviClick(position);
+                mDrawerLayout.closeDrawer(mContainerView);
+                Log.d("DataAbhi4","clicked navbarends");
+            }
+        });
         return view;
     }
 

@@ -2,13 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
-
+    android:background="#009688">
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:id="@+id/android_logo"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_gravity="right" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lv"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:layout_marginRight="4dp">
 
         </ListView>
 
